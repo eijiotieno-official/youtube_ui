@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:youtube_ui/src/home/view/nav/nav_view.dart';
+import '../../../src/home/view/feed/feed_view.dart';
+import '../../../src/home/view/sidebar/sidebar_view.dart';
+import '../../../src/home/view/nav/nav_view.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +19,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       child: Column(
         children: [
           NavView(),
+          Expanded(
+            child: Row(
+              children: [
+                SidebarView(),
+                FeedView(),
+              ],
+            ),
+          ),
         ],
       ),
     );

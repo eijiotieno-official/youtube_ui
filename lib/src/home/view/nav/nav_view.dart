@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:youtube_ui/src/home/view/nav/action_buttons_view.dart';
-import 'package:youtube_ui/src/home/view/nav/search_input_view.dart';
 
 import '../../../../core/view/widget/custom_icon_button.dart';
+import 'action_buttons_view.dart';
+import 'search_input_view.dart';
 
 class NavView extends ConsumerWidget {
   const NavView({super.key});

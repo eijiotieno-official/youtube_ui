@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_ui/core/view/widget/custom_icon_button.dart';
+import '../../../../core/view/widget/custom_icon_button.dart';
 
 class SearchInputView extends StatelessWidget {
   const SearchInputView({super.key});
