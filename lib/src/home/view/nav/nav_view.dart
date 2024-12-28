@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // Core Flutter package for UI
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpod for state management
+import 'package:youtube_ui/src/home/view/nav/logo_view.dart';
 
 import '../../../../core/view/widget/custom_icon_button.dart'; // Custom reusable icon button widget
 import 'action_buttons_view.dart'; // Widget for action buttons
@@ -18,6 +19,8 @@ class NavView extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(
             horizontal: 16.0), // Horizontal padding for the bar
         child: Row(
+          mainAxisAlignment: MainAxisAlignment
+              .spaceBetween, // Efficient way to space out the widgets
           children: [
             // Menu button on the left
             CustomIconButton(
@@ -25,29 +28,13 @@ class NavView extends ConsumerWidget {
               icon: Icons.menu_rounded, // Icon for the menu button
             ),
             // Logo placed after the menu button
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 16.0), // Space between menu button and logo
-              child: InkWell(
-                onTap: () {}, // Action when the logo is tapped
-                focusColor: Colors.transparent, // Remove focus color
-                hoverColor: Colors.transparent, // Remove hover color
-                child: Image.asset(
-                  "assets/logo.png", // Path to the logo image
-                  height: 100, // Logo height
-                  width: 100, // Logo width
-                  key: const Key('logo'), // Key for widget testing purposes
-                ),
-              ),
-            ),
-            // Spacer to push content apart
+            LogoView(),
             Spacer(),
             // Search bar widget in the center
-            SearchInputView(),
-            // Spacer to balance the layout
+            const SearchInputView(),
             Spacer(),
             // Action buttons on the right side of the navigation bar
-            ActionButtonsView(),
+            const ActionButtonsView(),
           ],
         ),
       ),

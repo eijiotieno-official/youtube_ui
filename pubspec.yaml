@@ -13,7 +13,6 @@ dependencies:
   flutter_riverpod: ^2.6.1
   flutter_lorem: ^2.0.0
   recase: ^4.1.0
-  cached_network_image: ^3.4.1
   collection: ^1.19.0
   device_preview: ^1.2.0
   

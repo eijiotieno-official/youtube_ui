@@ -2,7 +2,6 @@ import 'package:flutter/material.dart'; // Core Flutter package for UI
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpod package for state management
 
 // Import views for the home screen layout
-import '../../../src/home/view/feed/feed_view.dart'; // Feed section of the home screen
 import '../../../src/home/view/sidebar/sidebar_view.dart'; // Sidebar section
 import '../../../src/home/view/nav/nav_view.dart'; // Navigation bar section
 
@@ -32,8 +31,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               children: [
                 // SidebarView is on the left side of the layout
                 SidebarView(),
-                // FeedView occupies the remaining space
-                FeedView(),
+                Expanded(child: Container()),
               ],
             ),
           ),
