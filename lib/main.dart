@@ -1,5 +1,3 @@
-import 'package:device_preview/device_preview.dart'; // Package to preview the app on various device screens
-import 'package:flutter/foundation.dart'; // Provides constants like `kReleaseMode`
 import 'package:flutter/material.dart'; // Core Flutter widgets
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // State management with Riverpod
 import 'package:responsive_builder/responsive_builder.dart'; // Utilities for responsive design
@@ -14,13 +12,9 @@ void main() {
 
   runApp(
     // Wrap the app with DevicePreview to enable device simulations
-    DevicePreview(
-      enabled:
-          !kReleaseMode, // Only enable DevicePreview in debug or profile mode
-      builder: (context) => const ProviderScope(
-        // Provide the Riverpod scope for state management
-        child: MainApp(),
-      ),
+    const ProviderScope(
+      // Provide the Riverpod scope for state management
+      child: MainApp(),
     ),
   );
 }

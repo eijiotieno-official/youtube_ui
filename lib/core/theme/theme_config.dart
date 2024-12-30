@@ -36,6 +36,7 @@ class ThemeConfig {
           Color(0xFFFF325B).withOpacity(0.15), // Background for selected tiles
       titleTextStyle: TextStyle(
         fontSize: 18.0,
+        color: Colors.white,
       ),
     ),
     // Default icon color for the app

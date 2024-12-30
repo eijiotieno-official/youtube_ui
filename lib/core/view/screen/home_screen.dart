@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // Core Flutter package for UI
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpod package for state management
+import 'package:youtube_ui/src/home/view/category/category_view.dart';
 
 // Import views for the home screen layout
 import '../../../src/home/view/sidebar/sidebar_view.dart'; // Sidebar section
@@ -31,7 +32,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               children: [
                 // SidebarView is on the left side of the layout
                 SidebarView(),
-                Expanded(child: Container()),
+                Expanded(
+                  child: Column(
+                    children: [
+                      CategoryView(),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
