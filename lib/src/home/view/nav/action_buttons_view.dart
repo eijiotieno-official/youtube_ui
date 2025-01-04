@@ -38,7 +38,7 @@ class ActionButtonsView extends StatelessWidget {
             child: CircleAvatar(
               radius: 15, // Size of the avatar
               backgroundImage: AssetImage(
-                'assets/profile.png', // Path to the profile image
+                'assets/profile/profile.png', // Path to the profile image
               ),
             ),
           ),

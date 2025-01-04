@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart'; // Core Flutter package for UI
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpod for state management
-import 'package:youtube_ui/src/home/view/nav/logo_view.dart';
+import 'logo_view.dart';
 
 import '../../../../core/view/widget/custom_icon_button.dart'; // Custom reusable icon button widget
 import 'action_buttons_view.dart'; // Widget for action buttons

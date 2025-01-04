@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:youtube_ui/src/home/model/base/sidebar_item_model.dart';
+import '../../model/base/sidebar_item_model.dart';
 
 import '../../../../core/view/widget/custom_icon_button.dart'; // Custom reusable button widget
 import '../../view_model/selected_sidebar_item_view_model.dart'; // View model for sidebar state management

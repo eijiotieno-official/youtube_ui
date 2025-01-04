@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/view/widget/custom_icon_button.dart'; // Custom reusable icon button widget
 
 /// A reusable search input widget with a customizable search bar

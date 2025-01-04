@@ -14,7 +14,7 @@ dependencies:
   flutter_lorem: ^2.0.0
   recase: ^4.1.0
   collection: ^1.19.0
-  device_preview: ^1.2.0
+  intl: ^0.20.1
   
 
 dev_dependencies:
@@ -27,3 +27,5 @@ flutter:
 
   assets:
     - assets/
+    - assets/thumbnail/
+    - assets/profile/
