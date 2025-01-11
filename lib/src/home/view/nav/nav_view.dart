@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart'; // Core Flutter package for UI
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpod for state management
-import 'logo_view.dart';
 
 import '../../../../core/view/widget/custom_icon_button.dart'; // Custom reusable icon button widget
 import 'action_buttons_view.dart'; // Widget for action buttons
+import 'logo_view.dart';
 import 'search_input_view.dart'; // Widget for the search input field
 
 // NavView represents the navigation bar section of the app

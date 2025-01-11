@@ -2,10 +2,13 @@ import 'package:flutter/material.dart'; // Core Flutter package for UI
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpod package for state management
 
 import '../../../src/home/view/category/category_view.dart';
+import '../../../src/home/view/for_you/for_you_view.dart';
 import '../../../src/home/view/missed/missed_view.dart';
 import '../../../src/home/view/nav/nav_view.dart'; // Navigation bar section
+import '../../../src/home/view/shorts/shorts_view.dart';
 // Import views for the home screen layout
 import '../../../src/home/view/sidebar/sidebar_view.dart'; // Sidebar section
+import '../../../src/home/view/suggested/suggested_view.dart';
 
 // HomeScreen is a stateful widget with Riverpod integration for state management
 class HomeScreen extends ConsumerStatefulWidget {
@@ -36,10 +39,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
+                    child: ListView(
+                      physics: BouncingScrollPhysics(),
                       children: [
                         CategoryView(),
                         MissedView(),
+                        ForYouView(),
+                        SuggestedView(),
+                        ShortsView(),
                       ],
                     ),
                   ),

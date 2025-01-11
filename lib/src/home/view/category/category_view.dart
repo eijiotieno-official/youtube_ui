@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'category_item.dart';
-
 // Import custom widgets and view model
 import '../../../../core/view/widget/custom_icon_button.dart';
 import '../../view_model/selected_category_view_model.dart';
+import 'category_item.dart';
 
 class CategoryView extends ConsumerStatefulWidget {
   const CategoryView({super.key});

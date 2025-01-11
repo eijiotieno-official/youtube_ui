@@ -6,8 +6,14 @@ import 'custom_icon_button.dart'; // Custom widget for icon buttons.
 
 // A widget to display individual video items, including thumbnail, title, and metadata.
 class VideoItemView extends StatelessWidget {
+  final bool isShorts; // Flag to determine if the video is a "Short".
   final VideoModel video; // The video data to display.
-  const VideoItemView({super.key, required this.video});
+
+  const VideoItemView({
+    super.key,
+    required this.video,
+    this.isShorts = false, // Default value for isShorts is false.
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,6 @@ class VideoItemView extends StatelessWidget {
         // Add spacing around the widget.
         padding: const EdgeInsets.only(
           top: 24.0, // Top spacing.
-          right: 16.0, // Right spacing.
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min, // Minimize the vertical space usage.
@@ -39,32 +44,37 @@ class VideoItemView extends StatelessWidget {
             borderRadius: BorderRadius.circular(16.0), // Rounded corners.
             image: DecorationImage(
               image: AssetImage(video.thumbnail), // Load the thumbnail image.
-              fit: BoxFit.cover, // Cover the container fully.
+              fit: BoxFit.cover, // Cover the container fully with the image.
             ),
           ),
-          child: Align(
-            alignment: Alignment.bottomRight, // Align the duration overlay.
-            child: Padding(
-              padding: const EdgeInsets.all(8.0), // Padding around the overlay.
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color:
-                      Colors.black, // Black background for the duration text.
-                  borderRadius: BorderRadius.circular(4.0), // Rounded corners.
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 6.0, // Horizontal padding for text.
-                    vertical: 2.0, // Vertical padding for text.
+          child: isShorts
+              ? const SizedBox.expand() // No duration overlay for shorts.
+              : Align(
+                  alignment:
+                      Alignment.bottomRight, // Align the duration overlay.
+                  child: Padding(
+                    padding: const EdgeInsets.all(
+                        8.0), // Padding around the overlay.
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors
+                            .black, // Black background for the duration text.
+                        borderRadius:
+                            BorderRadius.circular(4.0), // Rounded corners.
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6.0, // Horizontal padding for text.
+                          vertical: 2.0, // Vertical padding for text.
+                        ),
+                        child: Text(
+                          // Format the video duration (e.g., 5:30).
+                          StringUtil.formatDurationCompact(video.duration),
+                        ),
+                      ),
+                    ),
                   ),
-                  child: Text(
-                    // Format the video duration (e.g., 5:30).
-                    StringUtil.formatDurationCompact(video.duration),
-                  ),
                 ),
-              ),
-            ),
-          ),
         ),
       );
 
@@ -77,20 +87,21 @@ class VideoItemView extends StatelessWidget {
           children: [
             Row(
               children: [
-                // Display the channel's avatar.
-                Padding(
-                  padding: const EdgeInsets.only(
-                      right: 8.0), // Space between avatar and title.
-                  child: CircleAvatar(
-                    backgroundImage:
-                        AssetImage(video.channelPhoto), // Load channel photo.
+                if (!isShorts)
+                  // Display the channel's avatar (if not a "Short").
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 8.0), // Space between avatar and title.
+                    child: CircleAvatar(
+                      backgroundImage:
+                          AssetImage(video.channelPhoto), // Load channel photo.
+                    ),
                   ),
-                ),
                 // Display the video title.
                 Expanded(
                   child: Text(
                     video.title, // The video title.
-                    maxLines: 2, // Limit to 2 lines.
+                    maxLines: 2, // Limit the title to 2 lines.
                     overflow:
                         TextOverflow.ellipsis, // Add ellipsis for overflow.
                   ),
@@ -107,14 +118,15 @@ class VideoItemView extends StatelessWidget {
                   const EdgeInsets.only(top: 4.0), // Spacing above metadata.
               child: Row(
                 children: [
-                  // Placeholder for an additional avatar (can be customized).
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: CircleAvatar(
-                      backgroundColor:
-                          Colors.transparent, // Transparent avatar.
+                  if (!isShorts)
+                    // Placeholder for an additional avatar (can be customized).
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: CircleAvatar(
+                        backgroundColor:
+                            Colors.transparent, // Transparent avatar.
+                      ),
                     ),
-                  ),
                   Expanded(
                     // Display channel name and metadata.
                     child: Column(

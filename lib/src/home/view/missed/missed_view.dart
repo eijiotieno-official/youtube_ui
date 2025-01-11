@@ -11,7 +11,7 @@ class MissedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Fetch a list of video models (mock data or database call for videos).
-    List<VideoModel> items = VideoDatabase.getVideos(10);
+    List<VideoModel> items = VideoDatabase.getVideos(count: 10);
 
     return SizedBox(
       width: double.infinity, // Take up the full width of the parent container.
@@ -52,7 +52,12 @@ class MissedView extends StatelessWidget {
                         Axis.horizontal, // Scroll direction is horizontal.
                     itemBuilder: (context, index) {
                       // Create a view for each video item.
-                      return VideoItemView(video: items[index]);
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                          right: 24.0,
+                        ),
+                        child: VideoItemView(video: items[index]),
+                      );
                     },
                   ),
                 ),

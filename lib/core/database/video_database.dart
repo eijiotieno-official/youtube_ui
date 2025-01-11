@@ -1,4 +1,5 @@
 import 'dart:math'; // Import for random number generation.
+
 import 'package:flutter_lorem/flutter_lorem.dart'; // Import for generating dummy text.
 
 import '../model/video_model.dart'; // Import the video model class.
@@ -7,12 +8,19 @@ import 'asset_database.dart'; // Import the asset database for asset paths.
 // A utility class to generate video data for testing or mock purposes.
 class VideoDatabase {
   // Private method to generate a list of `VideoModel` objects.
-  static List<VideoModel> _generateVideos(int count) {
-    final random = Random(); // Random number generator for randomizing data.
+  static List<VideoModel> _generateVideos({
+    required int count,
+    required bool isShorts,
+  }) {
+    Random random = Random(); // Random number generator for randomizing data.
 
     return List.generate(
       count, // Number of videos to generate.
       (index) {
+        int thumbnailIndex = random.nextInt(16);
+
+        int photoIndex = random.nextInt(14);
+
         // Create a new `VideoModel` for each index.
         return VideoModel(
           id: 'VID${(index + 1).toString().padLeft(3, '0')}',
@@ -30,13 +38,13 @@ class VideoDatabase {
           ),
           // Generate a random description with 10–110 words.
 
-          thumbnail: AssetDatabase.getThumbnails()[index],
+          thumbnail: AssetDatabase.getThumbnails()[thumbnailIndex],
           // Retrieve a thumbnail asset path using the index.
 
           channelName: 'UC${random.nextInt(90000) + 10000}',
           // Generate a random channel name resembling YouTube channel IDs.
 
-          channelPhoto: AssetDatabase.getProfiles()[index],
+          channelPhoto: AssetDatabase.getProfiles()[photoIndex],
           // Retrieve a profile photo asset path using the index.
 
           uploadDateTime: DateTime.now().subtract(Duration(
@@ -61,7 +69,7 @@ class VideoDatabase {
           viewsCount: random.nextInt(1000000),
           // Generate a random number of views (0–999,999).
 
-          isShorts: random.nextBool(),
+          isShorts: isShorts,
           // Randomly determine if the video is a "short".
         );
       },
@@ -69,8 +77,14 @@ class VideoDatabase {
   }
 
   // Public method to retrieve a list of videos.
-  static List<VideoModel> getVideos(int count) {
-    return _generateVideos(count);
+  static List<VideoModel> getVideos({
+    required int count,
+    bool isShorts = false,
+  }) {
+    return _generateVideos(
+      count: count,
+      isShorts: isShorts,
+    );
     // Call the private method to generate the requested number of videos.
   }
 }
